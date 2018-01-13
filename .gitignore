@@ -1,3 +1,5 @@
 config.codekit
 /bin
 /pkg
+desktop-app-2.6/node_modules
+desktop-app-2.6/dev/node_modules

@@ -54,106 +54,33 @@ func (_ tStatic) ServeModule(
 }
 
 
-type tFile struct {}
-var File tFile
+type tIndex struct {}
+var Index tIndex
 
 
-func (_ tFile) UploadBlogLogo(
+func (_ tIndex) Default(
 		) string {
 	args := make(map[string]string)
 	
-	return revel.MainRouter.Reverse("File.UploadBlogLogo", args).URL
+	return revel.MainRouter.Reverse("Index.Default", args).URL
 }
 
-func (_ tFile) PasteImage(
-		noteId string,
+func (_ tIndex) Index(
 		) string {
 	args := make(map[string]string)
 	
-	revel.Unbind(args, "noteId", noteId)
-	return revel.MainRouter.Reverse("File.PasteImage", args).URL
+	return revel.MainRouter.Reverse("Index.Index", args).URL
 }
 
-func (_ tFile) UploadAvatar(
+func (_ tIndex) Suggestion(
+		addr string,
+		suggestion string,
 		) string {
 	args := make(map[string]string)
 	
-	return revel.MainRouter.Reverse("File.UploadAvatar", args).URL
-}
-
-func (_ tFile) UploadImageLeaui(
-		albumId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "albumId", albumId)
-	return revel.MainRouter.Reverse("File.UploadImageLeaui", args).URL
-}
-
-func (_ tFile) GetImages(
-		albumId string,
-		key string,
-		page int,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "albumId", albumId)
-	revel.Unbind(args, "key", key)
-	revel.Unbind(args, "page", page)
-	return revel.MainRouter.Reverse("File.GetImages", args).URL
-}
-
-func (_ tFile) UpdateImageTitle(
-		fileId string,
-		title string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "fileId", fileId)
-	revel.Unbind(args, "title", title)
-	return revel.MainRouter.Reverse("File.UpdateImageTitle", args).URL
-}
-
-func (_ tFile) DeleteImage(
-		fileId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "fileId", fileId)
-	return revel.MainRouter.Reverse("File.DeleteImage", args).URL
-}
-
-func (_ tFile) OutputImage(
-		noteId string,
-		fileId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	revel.Unbind(args, "fileId", fileId)
-	return revel.MainRouter.Reverse("File.OutputImage", args).URL
-}
-
-func (_ tFile) CopyImage(
-		userId string,
-		fileId string,
-		toUserId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "userId", userId)
-	revel.Unbind(args, "fileId", fileId)
-	revel.Unbind(args, "toUserId", toUserId)
-	return revel.MainRouter.Reverse("File.CopyImage", args).URL
-}
-
-func (_ tFile) CopyHttpImage(
-		src string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "src", src)
-	return revel.MainRouter.Reverse("File.CopyHttpImage", args).URL
+	revel.Unbind(args, "addr", addr)
+	revel.Unbind(args, "suggestion", suggestion)
+	return revel.MainRouter.Reverse("Index.Suggestion", args).URL
 }
 
 
@@ -281,297 +208,6 @@ func (_ tUser) UpdateLeftIsMin(
 }
 
 
-type tNoteContentHistory struct {}
-var NoteContentHistory tNoteContentHistory
-
-
-func (_ tNoteContentHistory) ListHistories(
-		noteId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	return revel.MainRouter.Reverse("NoteContentHistory.ListHistories", args).URL
-}
-
-
-type tAuth struct {}
-var Auth tAuth
-
-
-func (_ tAuth) Login(
-		email string,
-		from string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "email", email)
-	revel.Unbind(args, "from", from)
-	return revel.MainRouter.Reverse("Auth.Login", args).URL
-}
-
-func (_ tAuth) DoLogin(
-		email string,
-		pwd string,
-		captcha string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "email", email)
-	revel.Unbind(args, "pwd", pwd)
-	revel.Unbind(args, "captcha", captcha)
-	return revel.MainRouter.Reverse("Auth.DoLogin", args).URL
-}
-
-func (_ tAuth) Logout(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Auth.Logout", args).URL
-}
-
-func (_ tAuth) Demo(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Auth.Demo", args).URL
-}
-
-func (_ tAuth) Register(
-		from string,
-		iu string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "from", from)
-	revel.Unbind(args, "iu", iu)
-	return revel.MainRouter.Reverse("Auth.Register", args).URL
-}
-
-func (_ tAuth) DoRegister(
-		email string,
-		pwd string,
-		iu string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "email", email)
-	revel.Unbind(args, "pwd", pwd)
-	revel.Unbind(args, "iu", iu)
-	return revel.MainRouter.Reverse("Auth.DoRegister", args).URL
-}
-
-func (_ tAuth) FindPassword(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Auth.FindPassword", args).URL
-}
-
-func (_ tAuth) DoFindPassword(
-		email string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "email", email)
-	return revel.MainRouter.Reverse("Auth.DoFindPassword", args).URL
-}
-
-func (_ tAuth) FindPassword2(
-		token string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "token", token)
-	return revel.MainRouter.Reverse("Auth.FindPassword2", args).URL
-}
-
-func (_ tAuth) FindPasswordUpdate(
-		token string,
-		pwd string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "token", token)
-	revel.Unbind(args, "pwd", pwd)
-	return revel.MainRouter.Reverse("Auth.FindPasswordUpdate", args).URL
-}
-
-
-type tNote struct {}
-var Note tNote
-
-
-func (_ tNote) Index(
-		noteId string,
-		online string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	revel.Unbind(args, "online", online)
-	return revel.MainRouter.Reverse("Note.Index", args).URL
-}
-
-func (_ tNote) ListNotes(
-		notebookId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "notebookId", notebookId)
-	return revel.MainRouter.Reverse("Note.ListNotes", args).URL
-}
-
-func (_ tNote) ListTrashNotes(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Note.ListTrashNotes", args).URL
-}
-
-func (_ tNote) GetNoteAndContent(
-		noteId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	return revel.MainRouter.Reverse("Note.GetNoteAndContent", args).URL
-}
-
-func (_ tNote) GetNoteAndContentBySrc(
-		src string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "src", src)
-	return revel.MainRouter.Reverse("Note.GetNoteAndContentBySrc", args).URL
-}
-
-func (_ tNote) GetNoteContent(
-		noteId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	return revel.MainRouter.Reverse("Note.GetNoteContent", args).URL
-}
-
-func (_ tNote) UpdateNoteOrContent(
-		noteOrContent interface{},
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteOrContent", noteOrContent)
-	return revel.MainRouter.Reverse("Note.UpdateNoteOrContent", args).URL
-}
-
-func (_ tNote) DeleteNote(
-		noteIds []string,
-		isShared bool,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteIds", noteIds)
-	revel.Unbind(args, "isShared", isShared)
-	return revel.MainRouter.Reverse("Note.DeleteNote", args).URL
-}
-
-func (_ tNote) DeleteTrash(
-		noteId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	return revel.MainRouter.Reverse("Note.DeleteTrash", args).URL
-}
-
-func (_ tNote) MoveNote(
-		noteIds []string,
-		notebookId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteIds", noteIds)
-	revel.Unbind(args, "notebookId", notebookId)
-	return revel.MainRouter.Reverse("Note.MoveNote", args).URL
-}
-
-func (_ tNote) CopyNote(
-		noteIds []string,
-		notebookId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteIds", noteIds)
-	revel.Unbind(args, "notebookId", notebookId)
-	return revel.MainRouter.Reverse("Note.CopyNote", args).URL
-}
-
-func (_ tNote) CopySharedNote(
-		noteIds []string,
-		notebookId string,
-		fromUserId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteIds", noteIds)
-	revel.Unbind(args, "notebookId", notebookId)
-	revel.Unbind(args, "fromUserId", fromUserId)
-	return revel.MainRouter.Reverse("Note.CopySharedNote", args).URL
-}
-
-func (_ tNote) SearchNote(
-		key string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "key", key)
-	return revel.MainRouter.Reverse("Note.SearchNote", args).URL
-}
-
-func (_ tNote) SearchNoteByTags(
-		tags []string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "tags", tags)
-	return revel.MainRouter.Reverse("Note.SearchNoteByTags", args).URL
-}
-
-func (_ tNote) ToPdf(
-		noteId string,
-		appKey string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	revel.Unbind(args, "appKey", appKey)
-	return revel.MainRouter.Reverse("Note.ToPdf", args).URL
-}
-
-func (_ tNote) ExportPdf(
-		noteId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	return revel.MainRouter.Reverse("Note.ExportPdf", args).URL
-}
-
-func (_ tNote) SetNote2Blog(
-		noteIds []string,
-		isBlog bool,
-		isTop bool,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteIds", noteIds)
-	revel.Unbind(args, "isBlog", isBlog)
-	revel.Unbind(args, "isTop", isTop)
-	return revel.MainRouter.Reverse("Note.SetNote2Blog", args).URL
-}
-
-
 type tCaptcha struct {}
 var Captcha tCaptcha
 
@@ -581,6 +217,109 @@ func (_ tCaptcha) Get(
 	args := make(map[string]string)
 	
 	return revel.MainRouter.Reverse("Captcha.Get", args).URL
+}
+
+
+type tFile struct {}
+var File tFile
+
+
+func (_ tFile) UploadBlogLogo(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("File.UploadBlogLogo", args).URL
+}
+
+func (_ tFile) PasteImage(
+		noteId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	return revel.MainRouter.Reverse("File.PasteImage", args).URL
+}
+
+func (_ tFile) UploadAvatar(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("File.UploadAvatar", args).URL
+}
+
+func (_ tFile) UploadImageLeaui(
+		albumId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "albumId", albumId)
+	return revel.MainRouter.Reverse("File.UploadImageLeaui", args).URL
+}
+
+func (_ tFile) GetImages(
+		albumId string,
+		key string,
+		page int,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "albumId", albumId)
+	revel.Unbind(args, "key", key)
+	revel.Unbind(args, "page", page)
+	return revel.MainRouter.Reverse("File.GetImages", args).URL
+}
+
+func (_ tFile) UpdateImageTitle(
+		fileId string,
+		title string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "fileId", fileId)
+	revel.Unbind(args, "title", title)
+	return revel.MainRouter.Reverse("File.UpdateImageTitle", args).URL
+}
+
+func (_ tFile) DeleteImage(
+		fileId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "fileId", fileId)
+	return revel.MainRouter.Reverse("File.DeleteImage", args).URL
+}
+
+func (_ tFile) OutputImage(
+		noteId string,
+		fileId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	revel.Unbind(args, "fileId", fileId)
+	return revel.MainRouter.Reverse("File.OutputImage", args).URL
+}
+
+func (_ tFile) CopyImage(
+		userId string,
+		fileId string,
+		toUserId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "userId", userId)
+	revel.Unbind(args, "fileId", fileId)
+	revel.Unbind(args, "toUserId", toUserId)
+	return revel.MainRouter.Reverse("File.CopyImage", args).URL
+}
+
+func (_ tFile) CopyHttpImage(
+		src string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "src", src)
+	return revel.MainRouter.Reverse("File.CopyHttpImage", args).URL
 }
 
 
@@ -707,230 +446,6 @@ func (_ tAlbum) UpdateAlbum(
 	revel.Unbind(args, "albumId", albumId)
 	revel.Unbind(args, "name", name)
 	return revel.MainRouter.Reverse("Album.UpdateAlbum", args).URL
-}
-
-
-type tShare struct {}
-var Share tShare
-
-
-func (_ tShare) AddShareNote(
-		noteId string,
-		emails []string,
-		perm int,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	revel.Unbind(args, "emails", emails)
-	revel.Unbind(args, "perm", perm)
-	return revel.MainRouter.Reverse("Share.AddShareNote", args).URL
-}
-
-func (_ tShare) AddShareNotebook(
-		notebookId string,
-		emails []string,
-		perm int,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "notebookId", notebookId)
-	revel.Unbind(args, "emails", emails)
-	revel.Unbind(args, "perm", perm)
-	return revel.MainRouter.Reverse("Share.AddShareNotebook", args).URL
-}
-
-func (_ tShare) ListShareNotes(
-		notebookId string,
-		userId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "notebookId", notebookId)
-	revel.Unbind(args, "userId", userId)
-	return revel.MainRouter.Reverse("Share.ListShareNotes", args).URL
-}
-
-func (_ tShare) GetShareNoteContent(
-		noteId string,
-		sharedUserId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	revel.Unbind(args, "sharedUserId", sharedUserId)
-	return revel.MainRouter.Reverse("Share.GetShareNoteContent", args).URL
-}
-
-func (_ tShare) ListNoteShareUserInfo(
-		noteId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	return revel.MainRouter.Reverse("Share.ListNoteShareUserInfo", args).URL
-}
-
-func (_ tShare) ListNotebookShareUserInfo(
-		notebookId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "notebookId", notebookId)
-	return revel.MainRouter.Reverse("Share.ListNotebookShareUserInfo", args).URL
-}
-
-func (_ tShare) UpdateShareNotePerm(
-		noteId string,
-		perm int,
-		toUserId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	revel.Unbind(args, "perm", perm)
-	revel.Unbind(args, "toUserId", toUserId)
-	return revel.MainRouter.Reverse("Share.UpdateShareNotePerm", args).URL
-}
-
-func (_ tShare) UpdateShareNotebookPerm(
-		notebookId string,
-		perm int,
-		toUserId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "notebookId", notebookId)
-	revel.Unbind(args, "perm", perm)
-	revel.Unbind(args, "toUserId", toUserId)
-	return revel.MainRouter.Reverse("Share.UpdateShareNotebookPerm", args).URL
-}
-
-func (_ tShare) DeleteShareNote(
-		noteId string,
-		toUserId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	revel.Unbind(args, "toUserId", toUserId)
-	return revel.MainRouter.Reverse("Share.DeleteShareNote", args).URL
-}
-
-func (_ tShare) DeleteShareNotebook(
-		notebookId string,
-		toUserId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "notebookId", notebookId)
-	revel.Unbind(args, "toUserId", toUserId)
-	return revel.MainRouter.Reverse("Share.DeleteShareNotebook", args).URL
-}
-
-func (_ tShare) DeleteShareNoteBySharedUser(
-		noteId string,
-		fromUserId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	revel.Unbind(args, "fromUserId", fromUserId)
-	return revel.MainRouter.Reverse("Share.DeleteShareNoteBySharedUser", args).URL
-}
-
-func (_ tShare) DeleteShareNotebookBySharedUser(
-		notebookId string,
-		fromUserId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "notebookId", notebookId)
-	revel.Unbind(args, "fromUserId", fromUserId)
-	return revel.MainRouter.Reverse("Share.DeleteShareNotebookBySharedUser", args).URL
-}
-
-func (_ tShare) DeleteUserShareNoteAndNotebook(
-		fromUserId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "fromUserId", fromUserId)
-	return revel.MainRouter.Reverse("Share.DeleteUserShareNoteAndNotebook", args).URL
-}
-
-func (_ tShare) AddShareNoteGroup(
-		noteId string,
-		groupId string,
-		perm int,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	revel.Unbind(args, "groupId", groupId)
-	revel.Unbind(args, "perm", perm)
-	return revel.MainRouter.Reverse("Share.AddShareNoteGroup", args).URL
-}
-
-func (_ tShare) DeleteShareNoteGroup(
-		noteId string,
-		groupId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	revel.Unbind(args, "groupId", groupId)
-	return revel.MainRouter.Reverse("Share.DeleteShareNoteGroup", args).URL
-}
-
-func (_ tShare) UpdateShareNoteGroupPerm(
-		noteId string,
-		groupId string,
-		perm int,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "noteId", noteId)
-	revel.Unbind(args, "groupId", groupId)
-	revel.Unbind(args, "perm", perm)
-	return revel.MainRouter.Reverse("Share.UpdateShareNoteGroupPerm", args).URL
-}
-
-func (_ tShare) AddShareNotebookGroup(
-		notebookId string,
-		groupId string,
-		perm int,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "notebookId", notebookId)
-	revel.Unbind(args, "groupId", groupId)
-	revel.Unbind(args, "perm", perm)
-	return revel.MainRouter.Reverse("Share.AddShareNotebookGroup", args).URL
-}
-
-func (_ tShare) DeleteShareNotebookGroup(
-		notebookId string,
-		groupId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "notebookId", notebookId)
-	revel.Unbind(args, "groupId", groupId)
-	return revel.MainRouter.Reverse("Share.DeleteShareNotebookGroup", args).URL
-}
-
-func (_ tShare) UpdateShareNotebookGroupPerm(
-		notebookId string,
-		groupId string,
-		perm int,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "notebookId", notebookId)
-	revel.Unbind(args, "groupId", groupId)
-	revel.Unbind(args, "perm", perm)
-	return revel.MainRouter.Reverse("Share.UpdateShareNotebookGroupPerm", args).URL
 }
 
 
@@ -1200,33 +715,518 @@ func (_ tAttach) DownloadAll(
 }
 
 
-type tIndex struct {}
-var Index tIndex
+type tNoteContentHistory struct {}
+var NoteContentHistory tNoteContentHistory
 
 
-func (_ tIndex) Default(
+func (_ tNoteContentHistory) ListHistories(
+		noteId string,
 		) string {
 	args := make(map[string]string)
 	
-	return revel.MainRouter.Reverse("Index.Default", args).URL
+	revel.Unbind(args, "noteId", noteId)
+	return revel.MainRouter.Reverse("NoteContentHistory.ListHistories", args).URL
 }
 
-func (_ tIndex) Index(
+
+type tNote struct {}
+var Note tNote
+
+
+func (_ tNote) Index(
+		noteId string,
+		online string,
 		) string {
 	args := make(map[string]string)
 	
-	return revel.MainRouter.Reverse("Index.Index", args).URL
+	revel.Unbind(args, "noteId", noteId)
+	revel.Unbind(args, "online", online)
+	return revel.MainRouter.Reverse("Note.Index", args).URL
 }
 
-func (_ tIndex) Suggestion(
-		addr string,
-		suggestion string,
+func (_ tNote) ListNotes(
+		notebookId string,
 		) string {
 	args := make(map[string]string)
 	
-	revel.Unbind(args, "addr", addr)
-	revel.Unbind(args, "suggestion", suggestion)
-	return revel.MainRouter.Reverse("Index.Suggestion", args).URL
+	revel.Unbind(args, "notebookId", notebookId)
+	return revel.MainRouter.Reverse("Note.ListNotes", args).URL
+}
+
+func (_ tNote) ListTrashNotes(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Note.ListTrashNotes", args).URL
+}
+
+func (_ tNote) GetNoteAndContent(
+		noteId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	return revel.MainRouter.Reverse("Note.GetNoteAndContent", args).URL
+}
+
+func (_ tNote) GetNoteAndContentBySrc(
+		src string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "src", src)
+	return revel.MainRouter.Reverse("Note.GetNoteAndContentBySrc", args).URL
+}
+
+func (_ tNote) GetNoteContent(
+		noteId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	return revel.MainRouter.Reverse("Note.GetNoteContent", args).URL
+}
+
+func (_ tNote) UpdateNoteOrContent(
+		noteOrContent interface{},
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteOrContent", noteOrContent)
+	return revel.MainRouter.Reverse("Note.UpdateNoteOrContent", args).URL
+}
+
+func (_ tNote) DeleteNote(
+		noteIds []string,
+		isShared bool,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteIds", noteIds)
+	revel.Unbind(args, "isShared", isShared)
+	return revel.MainRouter.Reverse("Note.DeleteNote", args).URL
+}
+
+func (_ tNote) DeleteTrash(
+		noteId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	return revel.MainRouter.Reverse("Note.DeleteTrash", args).URL
+}
+
+func (_ tNote) MoveNote(
+		noteIds []string,
+		notebookId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteIds", noteIds)
+	revel.Unbind(args, "notebookId", notebookId)
+	return revel.MainRouter.Reverse("Note.MoveNote", args).URL
+}
+
+func (_ tNote) CopyNote(
+		noteIds []string,
+		notebookId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteIds", noteIds)
+	revel.Unbind(args, "notebookId", notebookId)
+	return revel.MainRouter.Reverse("Note.CopyNote", args).URL
+}
+
+func (_ tNote) CopySharedNote(
+		noteIds []string,
+		notebookId string,
+		fromUserId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteIds", noteIds)
+	revel.Unbind(args, "notebookId", notebookId)
+	revel.Unbind(args, "fromUserId", fromUserId)
+	return revel.MainRouter.Reverse("Note.CopySharedNote", args).URL
+}
+
+func (_ tNote) SearchNote(
+		key string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "key", key)
+	return revel.MainRouter.Reverse("Note.SearchNote", args).URL
+}
+
+func (_ tNote) SearchNoteByTags(
+		tags []string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "tags", tags)
+	return revel.MainRouter.Reverse("Note.SearchNoteByTags", args).URL
+}
+
+func (_ tNote) ToPdf(
+		noteId string,
+		appKey string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	revel.Unbind(args, "appKey", appKey)
+	return revel.MainRouter.Reverse("Note.ToPdf", args).URL
+}
+
+func (_ tNote) ExportPdf(
+		noteId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	return revel.MainRouter.Reverse("Note.ExportPdf", args).URL
+}
+
+func (_ tNote) SetNote2Blog(
+		noteIds []string,
+		isBlog bool,
+		isTop bool,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteIds", noteIds)
+	revel.Unbind(args, "isBlog", isBlog)
+	revel.Unbind(args, "isTop", isTop)
+	return revel.MainRouter.Reverse("Note.SetNote2Blog", args).URL
+}
+
+
+type tShare struct {}
+var Share tShare
+
+
+func (_ tShare) AddShareNote(
+		noteId string,
+		emails []string,
+		perm int,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	revel.Unbind(args, "emails", emails)
+	revel.Unbind(args, "perm", perm)
+	return revel.MainRouter.Reverse("Share.AddShareNote", args).URL
+}
+
+func (_ tShare) AddShareNotebook(
+		notebookId string,
+		emails []string,
+		perm int,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "notebookId", notebookId)
+	revel.Unbind(args, "emails", emails)
+	revel.Unbind(args, "perm", perm)
+	return revel.MainRouter.Reverse("Share.AddShareNotebook", args).URL
+}
+
+func (_ tShare) ListShareNotes(
+		notebookId string,
+		userId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "notebookId", notebookId)
+	revel.Unbind(args, "userId", userId)
+	return revel.MainRouter.Reverse("Share.ListShareNotes", args).URL
+}
+
+func (_ tShare) GetShareNoteContent(
+		noteId string,
+		sharedUserId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	revel.Unbind(args, "sharedUserId", sharedUserId)
+	return revel.MainRouter.Reverse("Share.GetShareNoteContent", args).URL
+}
+
+func (_ tShare) ListNoteShareUserInfo(
+		noteId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	return revel.MainRouter.Reverse("Share.ListNoteShareUserInfo", args).URL
+}
+
+func (_ tShare) ListNotebookShareUserInfo(
+		notebookId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "notebookId", notebookId)
+	return revel.MainRouter.Reverse("Share.ListNotebookShareUserInfo", args).URL
+}
+
+func (_ tShare) UpdateShareNotePerm(
+		noteId string,
+		perm int,
+		toUserId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	revel.Unbind(args, "perm", perm)
+	revel.Unbind(args, "toUserId", toUserId)
+	return revel.MainRouter.Reverse("Share.UpdateShareNotePerm", args).URL
+}
+
+func (_ tShare) UpdateShareNotebookPerm(
+		notebookId string,
+		perm int,
+		toUserId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "notebookId", notebookId)
+	revel.Unbind(args, "perm", perm)
+	revel.Unbind(args, "toUserId", toUserId)
+	return revel.MainRouter.Reverse("Share.UpdateShareNotebookPerm", args).URL
+}
+
+func (_ tShare) DeleteShareNote(
+		noteId string,
+		toUserId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	revel.Unbind(args, "toUserId", toUserId)
+	return revel.MainRouter.Reverse("Share.DeleteShareNote", args).URL
+}
+
+func (_ tShare) DeleteShareNotebook(
+		notebookId string,
+		toUserId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "notebookId", notebookId)
+	revel.Unbind(args, "toUserId", toUserId)
+	return revel.MainRouter.Reverse("Share.DeleteShareNotebook", args).URL
+}
+
+func (_ tShare) DeleteShareNoteBySharedUser(
+		noteId string,
+		fromUserId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	revel.Unbind(args, "fromUserId", fromUserId)
+	return revel.MainRouter.Reverse("Share.DeleteShareNoteBySharedUser", args).URL
+}
+
+func (_ tShare) DeleteShareNotebookBySharedUser(
+		notebookId string,
+		fromUserId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "notebookId", notebookId)
+	revel.Unbind(args, "fromUserId", fromUserId)
+	return revel.MainRouter.Reverse("Share.DeleteShareNotebookBySharedUser", args).URL
+}
+
+func (_ tShare) DeleteUserShareNoteAndNotebook(
+		fromUserId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "fromUserId", fromUserId)
+	return revel.MainRouter.Reverse("Share.DeleteUserShareNoteAndNotebook", args).URL
+}
+
+func (_ tShare) AddShareNoteGroup(
+		noteId string,
+		groupId string,
+		perm int,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	revel.Unbind(args, "groupId", groupId)
+	revel.Unbind(args, "perm", perm)
+	return revel.MainRouter.Reverse("Share.AddShareNoteGroup", args).URL
+}
+
+func (_ tShare) DeleteShareNoteGroup(
+		noteId string,
+		groupId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	revel.Unbind(args, "groupId", groupId)
+	return revel.MainRouter.Reverse("Share.DeleteShareNoteGroup", args).URL
+}
+
+func (_ tShare) UpdateShareNoteGroupPerm(
+		noteId string,
+		groupId string,
+		perm int,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "noteId", noteId)
+	revel.Unbind(args, "groupId", groupId)
+	revel.Unbind(args, "perm", perm)
+	return revel.MainRouter.Reverse("Share.UpdateShareNoteGroupPerm", args).URL
+}
+
+func (_ tShare) AddShareNotebookGroup(
+		notebookId string,
+		groupId string,
+		perm int,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "notebookId", notebookId)
+	revel.Unbind(args, "groupId", groupId)
+	revel.Unbind(args, "perm", perm)
+	return revel.MainRouter.Reverse("Share.AddShareNotebookGroup", args).URL
+}
+
+func (_ tShare) DeleteShareNotebookGroup(
+		notebookId string,
+		groupId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "notebookId", notebookId)
+	revel.Unbind(args, "groupId", groupId)
+	return revel.MainRouter.Reverse("Share.DeleteShareNotebookGroup", args).URL
+}
+
+func (_ tShare) UpdateShareNotebookGroupPerm(
+		notebookId string,
+		groupId string,
+		perm int,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "notebookId", notebookId)
+	revel.Unbind(args, "groupId", groupId)
+	revel.Unbind(args, "perm", perm)
+	return revel.MainRouter.Reverse("Share.UpdateShareNotebookGroupPerm", args).URL
+}
+
+
+type tAuth struct {}
+var Auth tAuth
+
+
+func (_ tAuth) Login(
+		email string,
+		from string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "email", email)
+	revel.Unbind(args, "from", from)
+	return revel.MainRouter.Reverse("Auth.Login", args).URL
+}
+
+func (_ tAuth) DoLogin(
+		email string,
+		pwd string,
+		captcha string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "email", email)
+	revel.Unbind(args, "pwd", pwd)
+	revel.Unbind(args, "captcha", captcha)
+	return revel.MainRouter.Reverse("Auth.DoLogin", args).URL
+}
+
+func (_ tAuth) Logout(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Auth.Logout", args).URL
+}
+
+func (_ tAuth) Demo(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Auth.Demo", args).URL
+}
+
+func (_ tAuth) Register(
+		from string,
+		iu string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "from", from)
+	revel.Unbind(args, "iu", iu)
+	return revel.MainRouter.Reverse("Auth.Register", args).URL
+}
+
+func (_ tAuth) DoRegister(
+		email string,
+		pwd string,
+		iu string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "email", email)
+	revel.Unbind(args, "pwd", pwd)
+	revel.Unbind(args, "iu", iu)
+	return revel.MainRouter.Reverse("Auth.DoRegister", args).URL
+}
+
+func (_ tAuth) FindPassword(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Auth.FindPassword", args).URL
+}
+
+func (_ tAuth) DoFindPassword(
+		email string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "email", email)
+	return revel.MainRouter.Reverse("Auth.DoFindPassword", args).URL
+}
+
+func (_ tAuth) FindPassword2(
+		token string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "token", token)
+	return revel.MainRouter.Reverse("Auth.FindPassword2", args).URL
+}
+
+func (_ tAuth) FindPasswordUpdate(
+		token string,
+		pwd string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "token", token)
+	revel.Unbind(args, "pwd", pwd)
+	return revel.MainRouter.Reverse("Auth.FindPasswordUpdate", args).URL
 }
 
 
@@ -1367,6 +1367,92 @@ func (_ tAdminBlog) SetRecommend(
 }
 
 
+type tAdminUser struct {}
+var AdminUser tAdminUser
+
+
+func (_ tAdminUser) Index(
+		sorter string,
+		keywords string,
+		pageSize int,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "sorter", sorter)
+	revel.Unbind(args, "keywords", keywords)
+	revel.Unbind(args, "pageSize", pageSize)
+	return revel.MainRouter.Reverse("AdminUser.Index", args).URL
+}
+
+func (_ tAdminUser) Add(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("AdminUser.Add", args).URL
+}
+
+func (_ tAdminUser) Register(
+		email string,
+		pwd string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "email", email)
+	revel.Unbind(args, "pwd", pwd)
+	return revel.MainRouter.Reverse("AdminUser.Register", args).URL
+}
+
+func (_ tAdminUser) ResetPwd(
+		userId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "userId", userId)
+	return revel.MainRouter.Reverse("AdminUser.ResetPwd", args).URL
+}
+
+func (_ tAdminUser) DoResetPwd(
+		userId string,
+		pwd string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "userId", userId)
+	revel.Unbind(args, "pwd", pwd)
+	return revel.MainRouter.Reverse("AdminUser.DoResetPwd", args).URL
+}
+
+
+type tAdmin struct {}
+var Admin tAdmin
+
+
+func (_ tAdmin) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Admin.Index", args).URL
+}
+
+func (_ tAdmin) T(
+		t string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "t", t)
+	return revel.MainRouter.Reverse("Admin.T", args).URL
+}
+
+func (_ tAdmin) GetView(
+		view string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "view", view)
+	return revel.MainRouter.Reverse("Admin.GetView", args).URL
+}
+
+
 type tAdminUpgrade struct {}
 var AdminUpgrade tAdminUpgrade
 
@@ -1390,6 +1476,63 @@ func (_ tAdminUpgrade) UpgradeBeta3ToBeta4(
 	args := make(map[string]string)
 	
 	return revel.MainRouter.Reverse("AdminUpgrade.UpgradeBeta3ToBeta4", args).URL
+}
+
+
+type tAdminData struct {}
+var AdminData tAdminData
+
+
+func (_ tAdminData) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("AdminData.Index", args).URL
+}
+
+func (_ tAdminData) Backup(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("AdminData.Backup", args).URL
+}
+
+func (_ tAdminData) Restore(
+		createdTime string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "createdTime", createdTime)
+	return revel.MainRouter.Reverse("AdminData.Restore", args).URL
+}
+
+func (_ tAdminData) Delete(
+		createdTime string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "createdTime", createdTime)
+	return revel.MainRouter.Reverse("AdminData.Delete", args).URL
+}
+
+func (_ tAdminData) UpdateRemark(
+		createdTime string,
+		remark string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "createdTime", createdTime)
+	revel.Unbind(args, "remark", remark)
+	return revel.MainRouter.Reverse("AdminData.UpdateRemark", args).URL
+}
+
+func (_ tAdminData) Download(
+		createdTime string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "createdTime", createdTime)
+	return revel.MainRouter.Reverse("AdminData.Download", args).URL
 }
 
 
@@ -1717,149 +1860,6 @@ func (_ tAdminEmail) List(
 	revel.Unbind(args, "sorter", sorter)
 	revel.Unbind(args, "keywords", keywords)
 	return revel.MainRouter.Reverse("AdminEmail.List", args).URL
-}
-
-
-type tAdminUser struct {}
-var AdminUser tAdminUser
-
-
-func (_ tAdminUser) Index(
-		sorter string,
-		keywords string,
-		pageSize int,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "sorter", sorter)
-	revel.Unbind(args, "keywords", keywords)
-	revel.Unbind(args, "pageSize", pageSize)
-	return revel.MainRouter.Reverse("AdminUser.Index", args).URL
-}
-
-func (_ tAdminUser) Add(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("AdminUser.Add", args).URL
-}
-
-func (_ tAdminUser) Register(
-		email string,
-		pwd string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "email", email)
-	revel.Unbind(args, "pwd", pwd)
-	return revel.MainRouter.Reverse("AdminUser.Register", args).URL
-}
-
-func (_ tAdminUser) ResetPwd(
-		userId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "userId", userId)
-	return revel.MainRouter.Reverse("AdminUser.ResetPwd", args).URL
-}
-
-func (_ tAdminUser) DoResetPwd(
-		userId string,
-		pwd string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "userId", userId)
-	revel.Unbind(args, "pwd", pwd)
-	return revel.MainRouter.Reverse("AdminUser.DoResetPwd", args).URL
-}
-
-
-type tAdmin struct {}
-var Admin tAdmin
-
-
-func (_ tAdmin) Index(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Admin.Index", args).URL
-}
-
-func (_ tAdmin) T(
-		t string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "t", t)
-	return revel.MainRouter.Reverse("Admin.T", args).URL
-}
-
-func (_ tAdmin) GetView(
-		view string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "view", view)
-	return revel.MainRouter.Reverse("Admin.GetView", args).URL
-}
-
-
-type tAdminData struct {}
-var AdminData tAdminData
-
-
-func (_ tAdminData) Index(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("AdminData.Index", args).URL
-}
-
-func (_ tAdminData) Backup(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("AdminData.Backup", args).URL
-}
-
-func (_ tAdminData) Restore(
-		createdTime string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "createdTime", createdTime)
-	return revel.MainRouter.Reverse("AdminData.Restore", args).URL
-}
-
-func (_ tAdminData) Delete(
-		createdTime string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "createdTime", createdTime)
-	return revel.MainRouter.Reverse("AdminData.Delete", args).URL
-}
-
-func (_ tAdminData) UpdateRemark(
-		createdTime string,
-		remark string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "createdTime", createdTime)
-	revel.Unbind(args, "remark", remark)
-	return revel.MainRouter.Reverse("AdminData.UpdateRemark", args).URL
-}
-
-func (_ tAdminData) Download(
-		createdTime string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "createdTime", createdTime)
-	return revel.MainRouter.Reverse("AdminData.Download", args).URL
 }
 
 
